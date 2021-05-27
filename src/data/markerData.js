@@ -59,6 +59,11 @@ export const markerdata = [
     lat: 37.518247,
     lng: 127.028915,
   },
+  {
+    title: "14",
+    lat: 37.499159,
+    lng: 127.051429,
+  },
 ];
 
 // long = x

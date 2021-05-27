@@ -1,6 +1,7 @@
 /*global kakao */
 import React, { useEffect } from "react";
 import { markerdata } from "../../data/markerData";
+import mapPin from "../../assets/images/mapPin.png";
 
 export default function Map() {
   useEffect(() => {
@@ -16,16 +17,17 @@ export default function Map() {
 
     //map
     const map = new kakao.maps.Map(container, options);
+    const imageSrc = mapPin,
+      imageSize = new kakao.maps.Size(50, 75);
+
+    const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
     markerdata.forEach((el) => {
-      // 마커를 생성합니다
       new kakao.maps.Marker({
-        //마커가 표시 될 지도
         map: map,
-        //마커가 표시 될 위치
         position: new kakao.maps.LatLng(el.lat, el.lng),
-        //마커에 hover시 나타날 title
         title: el.title,
+        image: markerImage,
       });
     });
   };
