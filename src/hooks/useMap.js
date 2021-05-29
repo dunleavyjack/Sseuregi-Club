@@ -11,7 +11,7 @@ const useMap = () => {
     const mapscript = () => {
         let container = document.getElementById('map');
         let options = {
-            center: new kakao.maps.LatLng(37.514843, 127.020449),
+            center: new kakao.maps.LatLng(37.51355, 127.033647),
             level: 5,
         };
 
