@@ -3,7 +3,6 @@ import useMap from '../../hooks/useMap';
 
 const Map = () => {
     useMap();
-
     return <div id="map" style={{ width: '100vw', height: '100vh' }}></div>;
 };
 
