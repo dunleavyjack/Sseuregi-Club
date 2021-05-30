@@ -93,7 +93,7 @@ const useMap = () => {
 
                         let infowindow = new kakao.maps.InfoWindow({
                             position: trashPosition,
-                            content: `<div><a href="https://map.kakao.com/?urlX=${trashGridPosition.x}&urlY=${trashGridPosition.y}&name=Public+Trash+Can%21">Directions</a> ${lineLength}m Away</div>`,
+                            content: `<div><a href="https://map.kakao.com/?urlX=${trashGridPosition.x}&urlY=${trashGridPosition.y}&name=Public+Trash+Can+%3A%29">Directions</a> ${lineLength}m Away</div>`,
                         });
                         // infowindow.open(map, marker);
                         kakao.maps.event.addListener(
