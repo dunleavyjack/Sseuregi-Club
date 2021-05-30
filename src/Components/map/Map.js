@@ -13,12 +13,12 @@ const Map = () => {
     }
     return (
         <>
-            <div id="map" style={{ width: '100vw', height: '90vh' }}></div>
             <div style={{ padding: '20px' }}>
                 {canDistance.length === 32
                     ? `Nearest Bin ${closest}m away :)`
                     : 'Finding your location...'}
             </div>
+            <div id="map" style={{ width: '100vw', height: '90vh' }}></div>
         </>
     );
 };
