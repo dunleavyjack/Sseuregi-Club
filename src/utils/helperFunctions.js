@@ -8,3 +8,14 @@ export const getGridPosition = (address) => {
         y: yCoor,
     };
 };
+
+export const findClosestBin = (distancesArray) => {
+    let closestDistance = distancesArray[0];
+
+    for (let i = 1; i < distancesArray.length; i++) {
+        if (distancesArray[i] < closestDistance) {
+            closestDistance = distancesArray[i];
+        }
+    }
+    return closestDistance;
+};
