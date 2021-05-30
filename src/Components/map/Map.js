@@ -5,12 +5,22 @@ import { findClosestBin } from '../../utils/helperFunctions';
 const Map = () => {
     const [closestBin, setClosestBin] = useState(0);
     const { canDistance } = useMap();
+    let closest = 0;
 
     if (canDistance.length === 32) {
-        const closestBin = findClosestBin(canDistance);
-        console.log(closestBin);
+        closest = findClosestBin(canDistance);
+        console.log(closest);
     }
-    return <div id="map" style={{ width: '100vw', height: '100vh' }}></div>;
+    return (
+        <>
+            <div id="map" style={{ width: '100vw', height: '90vh' }}></div>
+            <div style={{ padding: '20px' }}>
+                {canDistance.length === 32
+                    ? `Nearest Bin ${closest}m away :)`
+                    : 'Finding your location...'}
+            </div>
+        </>
+    );
 };
 
 export default Map;
