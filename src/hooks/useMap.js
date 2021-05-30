@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { markerdata } from '../data/markerData';
 import trashPinImage from '../assets/images/trashPin.png';
 import recyclingPinImage from '../assets/images/recyclingPin.png';
-import locationPinImage from '../assets/images/locationPin.png';
+import locationPinImage from '../assets/images/locationPin3.png';
 import { getGridPosition } from '../utils/helperFunctions';
 
 const useMap = () => {
@@ -25,7 +25,7 @@ const useMap = () => {
                 recyclePinSize = new kakao.maps.Size(50, 75);
 
             const locationPinSrc = locationPinImage,
-                locationPinSize = new kakao.maps.Size(25, 37);
+                locationPinSize = new kakao.maps.Size(20, 20);
 
             const trashPin = new kakao.maps.MarkerImage(
                 trashPinSrc,
@@ -47,7 +47,7 @@ const useMap = () => {
                 new kakao.maps.Marker({
                     map: map,
                     position: locPosition,
-                    // image: locationPin,
+                    image: locationPin,
                 });
 
                 map.setCenter(locPosition);
