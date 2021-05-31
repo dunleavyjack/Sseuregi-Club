@@ -1,0 +1,33 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.popup {
+    height: 100px;
+    width: 200px;
+    text-align: center;
+}
+
+.popupTitle {
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 35px;
+}
+
+.popupInfo {
+    color: #008060;
+    font-weight: 800;
+    font-size: 8px;
+    line-height: 10px;
+}
+
+.popupButton {
+    background: #000000;
+    color: white;
+    border-radius: 50px;
+    font-size: 8px;
+    font-weight: bold;
+    border-style: none;
+    width: 120px;
+    height: 20px;
+}

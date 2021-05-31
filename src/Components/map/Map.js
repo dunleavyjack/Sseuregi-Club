@@ -1,3 +1,4 @@
+/* global kakao */
 import React, { useState } from 'react';
 import useMap from '../../hooks/useMap';
 import { findClosestBin } from '../../utils/helperFunctions';
@@ -11,6 +12,7 @@ const Map = () => {
         closest = findClosestBin(canDistance);
         console.log(closest);
     }
+
     return (
         <>
             <div style={{ padding: '20px' }}>

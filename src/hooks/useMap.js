@@ -4,10 +4,11 @@ import { markerdata } from '../data/markerData';
 import trashPinImage from '../assets/images/trashPin.png';
 import recyclingPinImage from '../assets/images/recyclingPin.png';
 import locationPinImage from '../assets/images/locationPin3.png';
-import { getGridPosition } from '../utils/helperFunctions';
+// import PopUpWindow from '../Components/popup/PopUpWindow';
+import { getGridPosition, findClosestBin } from '../utils/helperFunctions';
 
 const useMap = () => {
-    const [nearbyCans, setNearbyCans] = useState(0);
+    const [nearestCan, setNearestCans] = useState(0);
     const [canDistance, setCanDistance] = useState([]);
 
     useEffect(() => {
@@ -79,6 +80,7 @@ const useMap = () => {
                             title: trashCan.title,
                             image: trashCan.recycling ? recyclePin : trashPin,
                         });
+
                         let line = new kakao.maps.Polyline({
                             map: map, // 선을 표시할 지도입니다
                             path: [locPosition, trashPosition], // 선을 구성하는 좌표 배열입니다 클릭한 위치를 넣어줍니다
@@ -91,9 +93,18 @@ const useMap = () => {
                             lineLength,
                         ]);
 
+                        trashCan.distance = lineLength;
+
                         let infowindow = new kakao.maps.InfoWindow({
                             position: trashPosition,
-                            content: `<div><a href="https://map.kakao.com/?urlX=${trashGridPosition.x}&urlY=${trashGridPosition.y}&name=Public+Trash+Can+%3A%29">Directions</a> ${lineLength}m Away</div>`,
+                            // content: `<div class="popup";><a href="https://map.kakao.com/?urlX=${trashGridPosition.x}&urlY=${trashGridPosition.y}&name=Public+Trash+Can+%3A%29">Directions</a> ${lineLength}m Away</div>`,
+                            content: `<div class="popup">
+                                        <h1 class="popupTitle">${lineLength}m</h1>
+                                        <p class="popupInfo">TRASH AND RECYCLING</p>
+                                        <button onClick="window.location.href = 'https://map.kakao.com/?urlX=${trashGridPosition.x}&urlY=${trashGridPosition.y}&name=Public+Trash+Can+%3A%29'" class="popupButton">
+                                            GET DIRECTIONS
+                                        </button>
+                                    </div>`,
                         });
                         // infowindow.open(map, marker);
                         kakao.maps.event.addListener(
