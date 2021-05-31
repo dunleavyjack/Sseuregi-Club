@@ -3,31 +3,34 @@ body {
 }
 
 .popup {
-    height: 100px;
+    height: 85px;
     width: 200px;
     text-align: center;
 }
 
 .popupTitle {
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 700;
     line-height: 35px;
+    margin: 0;
 }
 
 .popupInfo {
     color: #008060;
     font-weight: 800;
-    font-size: 8px;
+    font-size: 12px;
     line-height: 10px;
+    margin-top: 0;
+    margin-bottom: 6px;
 }
 
 .popupButton {
     background: #000000;
     color: white;
     border-radius: 50px;
-    font-size: 8px;
+    font-size: 10px;
     font-weight: bold;
     border-style: none;
     width: 120px;
-    height: 20px;
+    height: 25px;
 }

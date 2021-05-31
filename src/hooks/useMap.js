@@ -95,12 +95,16 @@ const useMap = () => {
 
                         trashCan.distance = lineLength;
 
+                        let hasRecycling = trashCan.recycling
+                            ? 'RECYCLING AND TRASH'
+                            : 'TRASH ONLY';
+
                         let infowindow = new kakao.maps.InfoWindow({
                             position: trashPosition,
                             // content: `<div class="popup";><a href="https://map.kakao.com/?urlX=${trashGridPosition.x}&urlY=${trashGridPosition.y}&name=Public+Trash+Can+%3A%29">Directions</a> ${lineLength}m Away</div>`,
                             content: `<div class="popup">
                                         <h1 class="popupTitle">${lineLength}m</h1>
-                                        <p class="popupInfo">TRASH AND RECYCLING</p>
+                                        <p class="popupInfo">${hasRecycling}</p>
                                         <button onClick="window.location.href = 'https://map.kakao.com/?urlX=${trashGridPosition.x}&urlY=${trashGridPosition.y}&name=Public+Trash+Can+%3A%29'" class="popupButton">
                                             GET DIRECTIONS
                                         </button>
