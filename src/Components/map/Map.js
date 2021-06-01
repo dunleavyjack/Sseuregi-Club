@@ -19,14 +19,14 @@ const Map = () => {
 
     return (
         <>
-            <div style={{ padding: '20px' }}>
+            {/* <div style={{ padding: '20px' }}>
                 {canDistance.length === 32
                     ? `Nearest Bin ${closest}m away. :)`
                     : 'Finding your location...'}
-            </div>
+            </div> */}
             <div
                 id="map"
-                style={{ width: '100vw', height: '90vh', margin: '0px' }}
+                style={{ width: '100vw', height: '100vh', margin: '0px' }}
             ></div>
             <InfoPanel nearby={nearbyCans} />
         </>

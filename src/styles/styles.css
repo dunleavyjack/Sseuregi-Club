@@ -1,7 +1,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .popup {
@@ -68,7 +68,7 @@ body {
     height: 125px;
     width: 125px;
     border-radius: 50%;
-    bottom: 220px;
+    bottom: 75px;
     margin: 0 auto;
 }
 
@@ -83,7 +83,7 @@ body {
     margin: 0 auto;
     width: 300px;
     height: 70px;
-    bottom: 205px;
+    bottom: 57px;
 }
 
 .infoNumber {
@@ -92,7 +92,7 @@ body {
     color: white;
     margin: 0 auto;
     font-size: 30px;
-    bottom: 400px;
+    bottom: 200px;
     font-weight: bold;
 }
 
@@ -101,7 +101,7 @@ body {
     position: relative;
     color: white;
     margin: 0 auto;
-    bottom: 400px;
+    bottom: 200px;
     font-weight: bold;
 }
 
@@ -110,6 +110,21 @@ body {
     position: relative;
     color: white;
     margin: 0 auto;
-    bottom: 400px;
+    bottom: 200px;
     font-weight: bold;
+}
+
+.info {
+    z-index: 4;
+    position: relative;
+    color: white;
+    margin: 0 auto;
+    font-size: 15px;
+    bottom: 250px;
+    font-weight: bold;
+    width: 60px;
+}
+
+.number {
+    font-size: 30px !important;
 }
