@@ -21,7 +21,7 @@ const Map = () => {
         <>
             <div style={{ padding: '20px' }}>
                 {canDistance.length === 32
-                    ? `Nearest Bin ${closest}m away. There are ${nearbyCans} nearby. :)`
+                    ? `Nearest Bin ${closest}m away. :)`
                     : 'Finding your location...'}
             </div>
             <div
