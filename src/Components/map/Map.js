@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import useMap from '../../hooks/useMap';
 import InfoPanel from '../../Components/InfoPanel';
+import Navbar from '../../Components/Navbar';
 import { findClosestBin } from '../../utils/helperFunctions';
 
 const Map = () => {
@@ -19,11 +20,7 @@ const Map = () => {
 
     return (
         <>
-            {/* <div style={{ padding: '20px' }}>
-                {canDistance.length === 32
-                    ? `Nearest Bin ${closest}m away. :)`
-                    : 'Finding your location...'}
-            </div> */}
+            <Navbar />
             <div
                 id="map"
                 style={{ width: '100vw', height: '100vh', margin: '0px' }}
