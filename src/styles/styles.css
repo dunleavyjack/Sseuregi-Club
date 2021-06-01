@@ -34,3 +34,7 @@ body {
     width: 120px;
     height: 25px;
 }
+
+.popupButton:hover {
+    cursor: pointer;
+}

@@ -8,7 +8,7 @@ import locationPinImage from '../assets/images/locationPin3.png';
 import { getGridPosition, findClosestBin } from '../utils/helperFunctions';
 
 const useMap = () => {
-    const [nearestCan, setNearestCans] = useState(0);
+    const [nearbyCans, setNearbyCans] = useState(0);
     const [canDistance, setCanDistance] = useState([]);
 
     useEffect(() => {
@@ -88,6 +88,10 @@ const useMap = () => {
                         });
 
                         let lineLength = Math.round(line.getLength());
+                        if (lineLength < 1000) {
+                            setNearbyCans((prevCount) => prevCount + 1);
+                        }
+
                         setCanDistance((prevArray) => [
                             ...prevArray,
                             lineLength,
@@ -132,7 +136,7 @@ const useMap = () => {
         };
         mapscript();
     }, []);
-    return { canDistance };
+    return { canDistance, nearbyCans };
 };
 
 export default useMap;
