@@ -88,7 +88,7 @@ const useMap = () => {
                         });
 
                         let lineLength = Math.round(line.getLength());
-                        if (lineLength < 1000) {
+                        if (lineLength < 1600) {
                             setNearbyCans((prevCount) => prevCount + 1);
                         }
 
@@ -140,7 +140,3 @@ const useMap = () => {
 };
 
 export default useMap;
-
-// https://map.kakao.com/?urlX=400206.0&urlY=-11702.0&name=Hello+World%21
-
-//https://map.kakao.com/?map_type=TYPE_MAP&target=car&rt=%2C%2C400206%2C-11702&rt1=&rt2=Hello+World%21&rtIds=%2C&rtTypes=%2C
