@@ -88,7 +88,7 @@ const useMap = () => {
                         });
 
                         let lineLength = Math.round(line.getLength());
-                        if (lineLength < 1600) {
+                        if (lineLength < 1500) {
                             setNearbyCans((prevCount) => prevCount + 1);
                         }
 
