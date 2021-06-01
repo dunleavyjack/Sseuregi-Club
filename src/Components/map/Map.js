@@ -1,6 +1,7 @@
 /* global kakao */
 import React, { useState } from 'react';
 import useMap from '../../hooks/useMap';
+import InfoPanel from '../../Components/InfoPanel';
 import { findClosestBin } from '../../utils/helperFunctions';
 
 const Map = () => {
@@ -23,7 +24,11 @@ const Map = () => {
                     ? `Nearest Bin ${closest}m away. There are ${nearbyCans} nearby. :)`
                     : 'Finding your location...'}
             </div>
-            <div id="map" style={{ width: '100vw', height: '90vh' }}></div>
+            <div
+                id="map"
+                style={{ width: '100vw', height: '90vh', margin: '0px' }}
+            ></div>
+            <InfoPanel nearby={nearbyCans} />
         </>
     );
 };
