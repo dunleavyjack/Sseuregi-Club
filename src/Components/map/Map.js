@@ -25,7 +25,10 @@ const Map = () => {
                 id="map"
                 style={{ width: '100vw', height: '100vh', margin: '0px' }}
             ></div>
-            <InfoPanel nearby={nearbyCans} />
+            <InfoPanel
+                nearby={nearbyCans}
+                closest={findClosestBin(canDistance)}
+            />
         </>
     );
 };

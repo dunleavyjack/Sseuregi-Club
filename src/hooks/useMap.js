@@ -13,37 +13,49 @@ const useMap = () => {
 
     useEffect(() => {
         const mapscript = () => {
+            // establish the map container
             let container = document.getElementById('map');
+
+            // establish center pin and level of map
             let options = {
                 center: new kakao.maps.LatLng(37.505809, 127.037707),
                 level: 7,
             };
 
+            // set imgSrc and size of trash marker
             const trashPinSrc = trashPinImage,
                 trashPinSize = new kakao.maps.Size(50, 75);
 
+            // set imgSrc and size of recycle marker
             const recyclePinSrc = recyclingPinImage,
                 recyclePinSize = new kakao.maps.Size(50, 75);
 
+            // set imgSrc and size of location pin
             const locationPinSrc = locationPinImage,
                 locationPinSize = new kakao.maps.Size(20, 20);
 
+            // create trash marker
             const trashPin = new kakao.maps.MarkerImage(
                 trashPinSrc,
                 trashPinSize
             );
 
-            const locationPin = new kakao.maps.MarkerImage(
-                locationPinSrc,
-                locationPinSize
-            );
+            // create recycle marker
             const recyclePin = new kakao.maps.MarkerImage(
                 recyclePinSrc,
                 recyclePinSize
             );
 
+            // create location pin
+            const locationPin = new kakao.maps.MarkerImage(
+                locationPinSrc,
+                locationPinSize
+            );
+
+            // build map at default location (central seoul)
             const map = new kakao.maps.Map(container, options);
 
+            // find current location
             const displayMarker = (locPosition) => {
                 new kakao.maps.Marker({
                     map: map,
@@ -51,6 +63,7 @@ const useMap = () => {
                     image: locationPin,
                 });
 
+                // when user location found, add zoom-in animation
                 map.setCenter(locPosition);
                 map.setLevel(5, {
                     animate: {
@@ -59,21 +72,28 @@ const useMap = () => {
                 });
             };
 
+            // if user location found, begin program
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     var lat = position.coords.latitude, // 위도
                         lon = position.coords.longitude; // 경도
 
+                    // use animation to jump to user location
                     var locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
                     displayMarker(locPosition);
 
+                    // map over each bin location from the markerData file
                     markerdata.forEach((trashCan) => {
+                        // set lat and long for each bin
                         let trashPosition = new kakao.maps.LatLng(
                             trashCan.lat,
                             trashCan.lng
                         );
+
+                        // set 'map grid position' for each bin (needed for direction data)
                         let trashGridPosition = getGridPosition(trashPosition);
 
+                        //create marker for each pin
                         let marker = new kakao.maps.Marker({
                             map: map,
                             position: trashPosition,
@@ -81,28 +101,34 @@ const useMap = () => {
                             image: trashCan.recycling ? recyclePin : trashPin,
                         });
 
+                        // draw an 'invisible' line to each pin from user location
                         let line = new kakao.maps.Polyline({
                             map: map, // 선을 표시할 지도입니다
-                            path: [locPosition, trashPosition], // 선을 구성하는 좌표 배열입니다 클릭한 위치를 넣어줍니다
-                            strokeOpacity: 0, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
+                            path: [locPosition, trashPosition],
+                            strokeOpacity: 0,
                         });
 
+                        // get length of each line to find distance
                         let lineLength = Math.round(line.getLength());
                         if (lineLength < 1500) {
                             setNearbyCans((prevCount) => prevCount + 1);
                         }
 
+                        // add this distance to state array
                         setCanDistance((prevArray) => [
                             ...prevArray,
                             lineLength,
                         ]);
 
+                        // add this distance to each bin object
                         trashCan.distance = lineLength;
 
+                        // deteremine 'bin-type'
                         let hasRecycling = trashCan.recycling
                             ? 'RECYCLING AND TRASH'
                             : 'TRASH ONLY';
 
+                        // create an infoWindow object with distance/'bin-type'
                         let infowindow = new kakao.maps.InfoWindow({
                             position: trashPosition,
                             // content: `<div class="popup";><a href="https://map.kakao.com/?urlX=${trashGridPosition.x}&urlY=${trashGridPosition.y}&name=Public+Trash+Can+%3A%29">Directions</a> ${lineLength}m Away</div>`,
@@ -114,28 +140,32 @@ const useMap = () => {
                                         </button>
                                     </div>`,
                         });
-                        // infowindow.open(map, marker);
+
+                        // add click listener to each marker to open infoWindow
                         kakao.maps.event.addListener(
                             marker,
                             'click',
                             function () {
-                                // 마커 위에 인포윈도우를 표시합니다
                                 infowindow.open(map, marker);
                             }
                         );
+
+                        // add 'global' click listener anywhere else on the map to close infoWindow
                         kakao.maps.event.addListener(map, 'click', function () {
-                            // 마커 위에 인포윈도우를 표시합니다
                             infowindow.close();
                         });
                     });
                 });
             } else {
+                // if no location set, keep center of map at center
                 var locPosition = new kakao.maps.LatLng(33.450701, 126.570667);
                 displayMarker(locPosition);
             }
         };
+        // run program
         mapscript();
     }, []);
+    // return distance from each bin and nearby bins to Map.js
     return { canDistance, nearbyCans };
 };
 
