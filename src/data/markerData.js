@@ -228,4 +228,10 @@ export const markerdata = [
         lat: 37.532906,
         lng: 127.008182,
     },
+    {
+        title: '40',
+        recycling: true,
+        lat: 37.479702,
+        lng: 127.043632,
+    },
 ];
