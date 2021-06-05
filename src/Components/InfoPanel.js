@@ -10,7 +10,7 @@ const InfoPanel = ({ nearby, nearbyTrash = 0, nearbyRecycling = 0 }) => {
                     <div className="infoCircleContainer">
                         <div className="infoCircle"></div>
                         <p className="info">
-                            <span className="number">{nearby}</span> NEARBY BINS
+                            <span className="number">{nearby}</span>NEARBY BINS
                         </p>
                     </div>
                     <div className="infoBarTest">
