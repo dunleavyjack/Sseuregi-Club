@@ -1,37 +1,37 @@
 export const markerdata = [
     {
-        title: '1 | Trash + Recyling',
+        title: '1',
         recycling: true,
         lat: 37.491776,
         lng: 127.054961,
     },
     {
-        title: '3 | Trash + Recyling',
+        title: '3',
         recycling: true,
         lat: 37.487337,
         lng: 127.032718,
     },
     {
-        title: '4 | Trash Only',
+        title: '4',
         recycling: true,
         lat: 37.487152,
         lng: 127.032786,
     },
     {
-        title: '5 | Trash + Recyling',
+        title: '5',
         recycling: true,
         lat: 37.486539,
         lng: 127.033071,
     },
     {
-        title: '6 | Trash Only',
+        title: '6',
         recycling: true,
 
         lat: 37.484813,
         lng: 127.034227,
     },
     {
-        title: '7  | Trash + Recyling',
+        title: '7',
         recycling: true,
         lat: 37.469261,
         lng: 127.039737,

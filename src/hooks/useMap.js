@@ -10,6 +10,8 @@ import { getGridPosition, findClosestBin } from '../utils/helperFunctions';
 const useMap = () => {
     const [nearbyCans, setNearbyCans] = useState(0);
     const [canDistance, setCanDistance] = useState([]);
+    const [nearbyTrash, setNearbyTrash] = useState(0);
+    const [nearbyRecycling, setNearbyRecycling] = useState(0);
 
     useEffect(() => {
         const mapscript = () => {
@@ -112,6 +114,15 @@ const useMap = () => {
                         let lineLength = Math.round(line.getLength());
                         if (lineLength < 1500) {
                             setNearbyCans((prevCount) => prevCount + 1);
+
+                            //check if nearby can is recyling or trash
+                            if (trashCan.recycling) {
+                                setNearbyRecycling(
+                                    (prevCount) => prevCount + 1
+                                );
+                            } else {
+                                setNearbyTrash((prevCount) => prevCount + 1);
+                            }
                         }
 
                         // add this distance to state array
@@ -166,7 +177,7 @@ const useMap = () => {
         mapscript();
     }, []);
     // return distance from each bin and nearby bins to Map.js
-    return { canDistance, nearbyCans };
+    return { canDistance, nearbyCans, nearbyRecycling, nearbyTrash };
 };
 
 export default useMap;

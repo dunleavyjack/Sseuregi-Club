@@ -1,13 +1,12 @@
 /* global kakao */
 import React, { useState } from 'react';
 import useMap from '../../hooks/useMap';
-import InfoPanel from '../../Components/InfoPanel';
-import Navbar from '../../Components/Navbar';
+import InfoPanel from '../InfoPanel';
+import Navbar from '../Navbar';
 import { findClosestBin } from '../../utils/helperFunctions';
 
 const Map = () => {
-    const [closestBin, setClosestBin] = useState(0);
-    const { canDistance, nearbyCans } = useMap();
+    const { canDistance, nearbyCans, nearbyRecycling, nearbyTrash } = useMap();
     let closest = 0;
 
     if (canDistance.length === 32) {
@@ -27,7 +26,8 @@ const Map = () => {
             ></div>
             <InfoPanel
                 nearby={nearbyCans}
-                closest={findClosestBin(canDistance)}
+                nearbyTrash={nearbyTrash}
+                nearbyRecycling={nearbyRecycling}
             />
         </>
     );

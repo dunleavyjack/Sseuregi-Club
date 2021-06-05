@@ -47,6 +47,7 @@ body {
     text-align: center;
 }
 .infoContainer {
+    z-index: 1;
     display: flex;
     justify-content: center;
 }
@@ -57,13 +58,13 @@ body {
     bottom: 0;
     width: 100%;
     margin: 0 auto;
-    max-width: 700px;
+    max-width: 450px;
     background-color: white;
     color: black;
     text-align: center;
     border-top-left-radius: 35px;
     border-top-right-radius: 35px;
-    height: 150px;
+    height: 100px;
 }
 
 .infoCircle {
@@ -73,12 +74,12 @@ body {
     height: 125px;
     width: 125px;
     border-radius: 50%;
-    bottom: 75px;
+    bottom: 65px;
     margin: 0 auto;
 }
 
 .infoBar {
-    z-index: 2;
+    z-index: 4;
     position: relative;
     background: #ffffff;
     border: 3px solid #000000;
@@ -86,18 +87,18 @@ body {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
     border-radius: 50px;
     margin: 0 auto;
-    width: 300px;
-    height: 60px;
-    bottom: 60px;
+    width: 135px;
+    height: 70px;
+    bottom: 190px;
 }
 
 .info {
-    z-index: 4;
+    z-index: 6;
     position: relative;
     color: white;
     margin: 0 auto;
     font-size: 15px;
-    bottom: 240px;
+    bottom: 175px;
     font-weight: bold;
     width: 60px;
 }
@@ -119,6 +120,10 @@ body {
     font-weight: bold;
     font-size: 20px;
     line-height: 0.7;
+}
+
+.nearestCansContainer {
+    display: inline-flexbox;
 }
 
 .number {
@@ -147,4 +152,56 @@ body {
     float: right;
     padding: 13px;
     height: 50%;
+}
+
+.infoBarTest {
+    position: absolute;
+    width: 115px;
+    height: 70px;
+    left: 18px;
+    bottom: 13px;
+
+    background: #ffffff;
+    border: 3px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 50px;
+}
+
+.infoBarTestTwo {
+    position: absolute;
+    width: 115px;
+    height: 70px;
+    right: 18px;
+    bottom: 13px;
+
+    background: #ffffff;
+    border: 3px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 50px;
+}
+
+.trashIcon {
+    position: absolute;
+    height: 40px;
+    width: 32px;
+    bottom: 15px;
+    left: 21px;
+}
+
+.recycleIcon {
+    position: absolute;
+    height: 50px;
+    width: 41px;
+    bottom: 6px;
+    left: 18px;
+}
+
+.nearbyTrash {
+    position: absolute;
+    font-size: 30px;
+    font-weight: 700;
+    right: 21px;
+    line-height: 1px;
 }
